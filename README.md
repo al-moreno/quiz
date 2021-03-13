@@ -21,9 +21,9 @@ The coding on this application would be helpful (once all issue are fixed) with 
 
 You may open my code for review with VSCode by accessing the following links.
 
-https://al-moreno......
+https://github.com/al-moreno/quiz
 
-https://al-moreno......
+https://al-moreno.github.io/quiz/
 
 ## This repo containes:
 - A ReadMe.md file
