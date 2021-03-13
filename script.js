@@ -1,8 +1,3 @@
-//Global lobal variables
-var currentQuestion = 0;
-var timeClock = 0;
-var timeLeft = 0;
-
 //arrray of the quiz questions, avaialble choices, and correct answers     
 var questions = [{title: "What color was Tweety?",
     choices: ["black", "orange", "yellow"],
@@ -20,6 +15,10 @@ var questions = [{title: "What color was Tweety?",
     choices: ["1940", "1941", "1937" ],
     answer: "1940"},]; 
 
+//Global lobal variables
+var currentQuestion = 0;
+var timeClock = 0;
+var timeLeft = 0;
 
 //function to start the timer
 function start() {
