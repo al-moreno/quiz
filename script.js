@@ -1,3 +1,8 @@
+//Global lobal variables
+var currentQuestion = 0;
+var timeClock = 0;
+var timeLeft = 0;
+
 //arrray of the quiz questions, avaialble choices, and correct answers     
 var questions = [{title: "What color was Tweety?",
     choices: ["black", "orange", "yellow"],
@@ -15,14 +20,10 @@ var questions = [{title: "What color was Tweety?",
     choices: ["1940", "1941", "1937" ],
     answer: "1940"},]; 
 
-//Global lobal variables
-var currentQuestion = 0;
-var timeClock = 0;
-var timeLeft = 0;
 
 //function to start the timer
 function start() {
-    timeLeft = 50;
+    timeLeft = 25;
     document.getElementById("timeLeft").innerHTML = timeLeft;
 
     timer = setInterval(function() {
@@ -31,7 +32,7 @@ function start() {
     
     if (timeLeft <= 0) {
         clearInterval(timer);
-        endGame(); 
+        end(); 
     }
 }, 1000);
 
@@ -39,10 +40,10 @@ function start() {
 };
 
 //Stops timer
-function endGame() {
+function end() {
     clearInterval(timer);
 
-var quizContent =   `<h3>Game Over</h3>
+let quizContent =   `<h3>Game Over</h3>
                     <p>Your score was: ` + timeClock +  ` % out of 100, read up more </br>about Looney Toons and come back to try again. </p>
                     <input id="initials" placeholder="Initials"></br>
                     <button onclick="setScore()">Set score!</button>`;
@@ -59,7 +60,7 @@ function setScore() {
 };
 
 function getScore() {
-var quizContent = `<h2>` + localStorage.getItem("topScoreInt") + `'s topScore is:</h2>
+let quizContent = `<h2>` + localStorage.getItem("topScoreInt") + `'s topScore is:</h2>
                     <h1>` + localStorage.getItem("topScore") + `</h1><br> 
                     <button onclick="clearScore()">Clear</button></br><button onclick="tryAgain()">Try Again</button>`;
 
@@ -81,7 +82,7 @@ function tryAgain() {
     
 document.getElementById("timeLeft").innerHTML = timeLeft;
 
-var quizContent =   `<h2> Looney Toon's</h2>
+let quizContent =   `<h2> Looney Toon's</h2>
                     <h3>How much do you know?</h3>
                     <button onclick="start()"> Click to Start</button>`;
 
@@ -105,17 +106,21 @@ function next() {
     currentQuestion++;
 
 if (currentQuestion > questions.length - 1) {
-    endGame();
+    end();
     return;
 };
 
 var quizContent = "<h2>" + questions[currentQuestion].title + "</h2>"
 
-for (var buttonLoop = 0; buttonLoop < questions[currentQuestion].choices.length; buttonLoop++) {
-    var buttonCode = "<button onclick=\"[selection]\">[option]</button>"; 
-    buttonCode = buttonCode.replace("[option]", questions[currentQuestion].choices[buttonLoop]);
+var buttonCode = 0;
 
-    if (questions[currentQuestion].choices[buttonLoop] == questions[currentQuestion].answer) {
+
+
+for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
+    let buttonCode = "<button onclick=\"[selection]\">[option]</button>"; 
+    buttonCode = buttonCode.replace("[option]", questions[currentQuestion].choices[i]);
+
+    if (questions[currentQuestion].choices[i] == questions[currentQuestion].answer) {
         buttonCode = buttonCode.replace("[selection]", "correct()");
     } else {
         buttonCode = buttonCode.replace("[selection]", "incorrect()");
