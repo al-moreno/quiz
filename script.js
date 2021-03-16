@@ -1,6 +1,5 @@
 //Global lobal variables
 var currentQuestion = 0;
-var timeClock = 0;
 var timeLeft = 0;
 
 //arrray of the quiz questions, avaialble choices, and correct answers     
@@ -44,7 +43,7 @@ function end() {
     clearInterval(timer);
 
 let quizContent =   `<h3>Game Over</h3>
-                    <p>Your score was: ` + timeClock +  ` % out of 100, read up more </br>about Looney Toons and come back to try again. </p>
+                    <p>Your score was: ` + timeLeft +  ` % out of 100, read up more </br>about Looney Toons and come back to try again. </p>
                     <input id="initials" placeholder="Initials"></br>
                     <button onclick="setScore()">Set score!</button>`;
 
@@ -53,7 +52,7 @@ let quizContent =   `<h3>Game Over</h3>
 
 //Local storage score
 function setScore() {
-    localStorage.setItem("topScore", timeClock);
+    localStorage.setItem("topScore", timeLeft);
     localStorage.setItem("topScoreInt",  document.getElementById('initials').value);
     
     getScore();
@@ -97,7 +96,7 @@ function incorrect() {
 
 //Score increased for correct
 function correct() {
-    timeClock += 10;
+    timeLeft += 10;
     next();
 };
 
